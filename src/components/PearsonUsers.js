@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Header from './Header';
+import Profiles from './Profiles';
 
-export class PearsonUsers extends Component {
+export default class PearsonUsers extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       users: [
         {
@@ -32,10 +33,22 @@ export class PearsonUsers extends Component {
   }
 
   render() {
+    const { users } = this.state;
+    const userList = users.map(item => {
+      const name = `${item.first_name} ${item.last_name}`;
+            
+      return (
+        <Profiles
+        key={item.id}
+        name={name}
+        avatar={item.avatar}
+        />
+      )
+    })
     return (
-      <div className="pearon-users">
-        <h1>Pearson User Management</h1>
-        {/* Render users here */}
+      <div className="users__container">
+      <Header />
+      {userList}
       </div>
     );
   }
