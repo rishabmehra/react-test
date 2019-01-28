@@ -2,7 +2,7 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import  PearsonUsers  from "../PearsonUsers";
 
-describe.skip("PearsonUsers", () => {
+describe("PearsonUsers", () => {
   let component;
 
   beforeEach(() => {

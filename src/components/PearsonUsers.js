@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from './Header';
 import Profiles from './Profiles';
 import { HEADER_TITLE, API_URL } from '../constants/constants';
-import { removeDuplicates, removeObjWithId } from '../utils/utils';
+import { removeDuplicateUtils, removeObjWithId } from '../utils/utils';
 import fetch from 'isomorphic-fetch';
 import './PearsonUsers.css';
 
@@ -36,20 +36,23 @@ export default class PearsonUsers extends Component {
     };
   }
 
+  /* Invoke the API call to fetch the profile list */
   componentDidMount(){
     fetch(API_URL).then(response => {
       return response.json();
     }).then(res => {
-      return this.updateProfileDetails(res.data);
+      return this.removeDuplicatesProfiles(res.data);
   })
   }
 
-  updateProfileDetails = (data) => {
+  /* Remove the duplicates values from profile list */
+  removeDuplicatesProfiles = (data) => {
     const { users } = this.state;
-    const updateProfileData = removeDuplicates([...users, ...data],'id');
+    const updateProfileData = removeDuplicateUtils([...users, ...data],'id');
     this.setState({ users : updateProfileData});
   }
 
+/* Delete the particular user from the list*/
   onDeleteAction= (event) =>{
     const { users } =  this.state;
     const removeClickedProfile = removeObjWithId(users, parseInt(event.target.id));
@@ -59,12 +62,12 @@ export default class PearsonUsers extends Component {
   render() {
     const { users } = this.state;
     const userList = users.map(item => {
-    const name = `${item.first_name} ${item.last_name}`;
+    const profilename = `${item.first_name} ${item.last_name}`;
             
       return (
         <Profiles
         key={item.id}
-        name={name}
+        profilename={profilename}
         avatar={item.avatar}
         id={item.id}
         onDeleteAction={this.onDeleteAction}

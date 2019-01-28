@@ -5,7 +5,7 @@ import  Profiles  from "../Profiles";
 describe("Profile", () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Profiles key={`4`} name={`Evan Bold`} avatar={`test-url`} />);
+    component = shallow(<Profiles key={`4`} profilename={`Evan Bold`} avatar={`test-url`} />);
   });
 
   it('should render profile component', () => {
