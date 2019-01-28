@@ -1,0 +1,50 @@
+.users__header{
+    font-size: 36px;
+    margin: 14px;
+    color: #007fA3;
+}
+
+.users__container-list{
+    display: flex;
+    flex-direction: row;
+    background-color: #D8D8D8;
+    padding: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .profile__container{
+    position: relative;
+    padding: 40px;
+    margin: 37px;
+    background-color: #FFFFFF	;
+    width: 212px;
+    height: 12px;
+  }
+  
+  .profile__container-avator-img {
+    width:80px;
+    height: 80px;
+    border-radius: 40px;
+    position: absolute;
+    margin-left: 55px;
+    bottom: 55%;
+  }
+  
+  .profile__container-name{
+    margin-left: 58px;
+    font-size: 18px;
+    color: #E93939;
+  }
+
+  .profile__container-delete{
+      position : absolute;
+      left:6px;
+      top:72px;
+  }
+
+  .profile__container-delete > a {
+      font-size: 14px;
+      color: #007fA3;
+      cursor: pointer;
+  }

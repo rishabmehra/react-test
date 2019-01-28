@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Profile = (props) => {
     return (
@@ -8,7 +8,7 @@ const Profile = (props) => {
          </div>
          <div className="profile__container-name">{props.name}</div>
          <div className="profile__container-delete">
-          <a>Delete</a>
+          <a id={props.id} onClick={props.onDeleteAction}>Delete</a>
          </div>
         </div>
     )

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Header from './Header';
 import Profiles from './Profiles';
-import { HEADER_TITLE } from '../constants/constants';
+import { HEADER_TITLE, API_URL } from '../constants/constants';
+import { removeDuplicates, removeObjWithId } from '../utils/utils';
+import fetch from 'isomorphic-fetch';
+import './PearsonUsers.css';
 
 export default class PearsonUsers extends Component {
   constructor(props) {
@@ -33,16 +36,38 @@ export default class PearsonUsers extends Component {
     };
   }
 
+  componentDidMount(){
+    fetch(API_URL).then(response => {
+      return response.json();
+    }).then(res => {
+      return this.updateProfileDetails(res.data);
+  })
+  }
+
+  updateProfileDetails = (data) => {
+    const { users } = this.state;
+    const updateProfileData = removeDuplicates([...users, ...data],'id');
+    this.setState({ users : updateProfileData});
+  }
+
+  onDeleteAction= (event) =>{
+    const { users } =  this.state;
+    const removeClickedProfile = removeObjWithId(users, parseInt(event.target.id));
+    this.setState({ users : removeClickedProfile });
+  }
+
   render() {
     const { users } = this.state;
     const userList = users.map(item => {
-      const name = `${item.first_name} ${item.last_name}`;
+    const name = `${item.first_name} ${item.last_name}`;
             
       return (
         <Profiles
         key={item.id}
         name={name}
         avatar={item.avatar}
+        id={item.id}
+        onDeleteAction={this.onDeleteAction}
         />
       )
     })
