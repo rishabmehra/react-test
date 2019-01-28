@@ -1,4 +1,4 @@
-import { removeDuplicateUtils, removeObjWithId } from '../utils';
+import { removeDuplicateUtils, removeObjWithIdUtils } from '../utils';
 
 describe('Utils', () =>{
    it('should remove the duplicated values from array of object', () =>{
@@ -103,7 +103,7 @@ describe('Utils', () =>{
           }
       ]
 
-      expect(removeObjWithId(input,4)).toEqual(output);
+      expect(removeObjWithIdUtils(input,4)).toEqual(output);
        
    });
 })

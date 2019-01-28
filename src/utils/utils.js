@@ -10,6 +10,6 @@ export const removeDuplicateUtils = (data,key) =>{
 }
 
 /* remove the object from an array w.r.t Id */ 
-export const removeObjWithId = (arr,id) => {
+export const removeObjWithIdUtils = (arr,id) => {
     return arr.filter(item => item.id !== id)    
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from './Header';
 import Profiles from './Profiles';
 import { HEADER_TITLE, API_URL } from '../constants/constants';
-import { removeDuplicateUtils, removeObjWithId } from '../utils/utils';
+import { removeDuplicateUtils, removeObjWithIdUtils } from '../utils/utils';
 import fetch from 'isomorphic-fetch';
 import './PearsonUsers.css';
 
@@ -55,7 +55,7 @@ export default class PearsonUsers extends Component {
 /* Delete the particular user from the list*/
   onDeleteAction= (event) =>{
     const { users } =  this.state;
-    const removeClickedProfile = removeObjWithId(users, parseInt(event.target.id));
+    const removeClickedProfile = removeObjWithIdUtils(users, parseInt(event.target.id));
     this.setState({ users : removeClickedProfile });
   }
 
