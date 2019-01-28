@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from './Header';
 import Profiles from './Profiles';
+import { HEADER_TITLE } from '../constants/constants';
 
 export default class PearsonUsers extends Component {
   constructor(props) {
@@ -47,8 +48,10 @@ export default class PearsonUsers extends Component {
     })
     return (
       <div className="users__container">
-      <Header />
-      {userList}
+      <Header title={HEADER_TITLE} />
+      <div className="users__container-list">
+         {userList}
+      </div>
       </div>
     );
   }

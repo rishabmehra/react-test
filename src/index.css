@@ -2,4 +2,37 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.users__container-list{
+  display: flex;
+  flex-direction: row;
+  background-color: #D8D8D8;
+  padding: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profile__container{
+  padding: 40px;
+  margin: 37px;
+  background-color: #f1425d;
+  width: 212px;
+  height: 12px;
+}
+
+.profile__container-avator-img {
+  width:80px;
+  height: 80px;
+  border-radius: 40px;
+	position: absolute;
+  margin-left: 48px;
+  bottom: 55%;
+}
+
+.profile__container-name{
+  margin-left: 58px;
+  font-size: 18px;
+  color: #E93939;
 }
